@@ -20,14 +20,10 @@ class HomeFragment : Fragment() {
     private val TAG = "RecipeViewModel"
 
     private var binding : FragmentHomeBinding? = null
-
     private val recipeViewModel: RecipeViewModel by viewModels()
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
@@ -40,10 +36,10 @@ class HomeFragment : Fragment() {
 
         // Observe LiveData
         recipeViewModel.recipeState.observe(viewLifecycleOwner) { state ->
+            binding?.progressBar?.visibility = if (state is RecipeState.Loading) View.VISIBLE else View.GONE
             when (state) {
                 is RecipeState.Loading -> {
                     Log.d(TAG, "Received loading")
-
                 }
 
                 is RecipeState.Success -> {
