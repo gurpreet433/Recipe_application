@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="padding_medium">20dp</dimen>
+    <dimen name="card_radius">35dp</dimen>
+    <dimen name="home_card_margin">25dp</dimen>
+    <dimen name="card_height_main">500dp</dimen>
+    <dimen name="card_text_size">18sp</dimen>
 </resources>

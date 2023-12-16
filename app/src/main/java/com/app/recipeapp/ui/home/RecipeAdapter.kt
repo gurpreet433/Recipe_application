@@ -42,6 +42,7 @@ class RecipeAdapter : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
 
         fun bind(recipe: Recipe) {
             binding.recipe = recipe
+
             binding.executePendingBindings()
         }
     }
