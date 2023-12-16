@@ -6,17 +6,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.recipeapp.R
 import com.app.recipeapp.databinding.FragmentHomeBinding
+import com.app.recipeapp.pojo.network.Recipe
 import com.app.recipeapp.pojo.network.RecipeState
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), RecipeAdapter.OnRecipeItemClickListener {
+
     private val TAG = "RecipeViewModel"
 
     private var binding : FragmentHomeBinding? = null
@@ -30,7 +33,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        recipeAdapter = RecipeAdapter()
+        recipeAdapter = RecipeAdapter(this)
         binding?.verticalRecyclerview?.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = recipeAdapter
@@ -66,6 +69,14 @@ class HomeFragment : Fragment() {
         }
 
         return binding!!.root
+    }
+
+    override fun onRecipeItemClick(recipe: Recipe) {
+        // Handle the click event here
+        val recipeName = recipe.label
+        Toast.makeText(requireContext(), "Clicked on $recipeName", Toast.LENGTH_SHORT).show()
+
+        // If you need to perform any other action on item click, you can do it here
     }
 
     override fun onDestroyView() {

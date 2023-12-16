@@ -10,7 +10,7 @@ import com.app.recipeapp.pojo.network.Hit
 import com.app.recipeapp.pojo.network.Recipe
 import com.bumptech.glide.Glide
 
-class RecipeAdapter : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
+class RecipeAdapter(private val itemClickListener: OnRecipeItemClickListener) : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
 
     private var hits: List<Hit> = emptyList()
 
@@ -37,6 +37,16 @@ class RecipeAdapter : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
     inner class RecipeViewHolder(private val binding: RecyclerviewItemVerticalBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
+        init {
+            binding.root.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    val clickedRecipe = hits[position].recipe
+                    itemClickListener.onRecipeItemClick(clickedRecipe)
+                }
+            }
+        }
+
         fun bind(recipe: Recipe) {
             binding.recipe = recipe
             binding.executePendingBindings()
@@ -58,5 +68,9 @@ class RecipeAdapter : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
         override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
             return oldList[oldItemPosition] == newList?.get(newItemPosition)
         }
+    }
+
+    interface OnRecipeItemClickListener {
+        fun onRecipeItemClick(recipe: Recipe)
     }
 }
