@@ -9,6 +9,7 @@ interface RecipeApiService {
 
     @GET("recipes/v2")
     suspend fun searchRecipes(
+        @Query("type") type: String,
         @Query("app_id") appId: String,
         @Query("app_key") appKey: String,
         @Query("q") query: String

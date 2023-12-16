@@ -57,7 +57,7 @@ class HomeFragment : Fragment() {
                     // Show error message or handle error UI state
                     val errorMessage = state.errorMessage
                     // Handle error UI state
-                    Log.d(TAG, "Received error")
+                    Log.d(TAG, "Received error $state ${state.errorMessage}")
                 }
             }
         }

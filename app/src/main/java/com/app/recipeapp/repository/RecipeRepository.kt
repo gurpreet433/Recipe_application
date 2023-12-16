@@ -11,6 +11,6 @@ class RecipeRepository(private val apiService: RecipeApiService) {
         val appId = ApiConstants.API_APP_ID
         val appKey = ApiConstants.API_APP_KEY
 
-        return apiService.searchRecipes(appId, appKey, query)
+        return apiService.searchRecipes(ApiConstants.TYPE, appId, appKey, query)
     }
 }
