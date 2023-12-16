@@ -1,0 +1,41 @@
+package com.app.recipeapp.di
+
+import com.app.recipeapp.api.RecipeApiService
+import com.app.recipeapp.repository.RecipeRepository
+import com.app.recipeapp.ui.home.RecipeViewModel
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Singleton
+
+@Module
+@InstallIn(SingletonComponent::class)
+object AppModule {
+
+    private const val BASE_URL = "base_url"
+
+    @Provides
+    @Singleton
+    fun provideRecipeApiService(): RecipeApiService {
+        return Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(RecipeApiService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideRecipeRepository(apiService: RecipeApiService): RecipeRepository {
+        return RecipeRepository(apiService)
+    }
+
+    @Provides
+    @Singleton
+    fun provideRecipeViewModel(repository: RecipeRepository): RecipeViewModel {
+        return RecipeViewModel(repository)
+    }
+}
