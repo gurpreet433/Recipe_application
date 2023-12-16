@@ -7,8 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.app.recipeapp.R
 import com.app.recipeapp.databinding.FragmentHomeBinding
@@ -22,7 +24,7 @@ class HomeFragment : Fragment(), RecipeAdapter.OnRecipeItemClickListener {
 
     private val TAG = "RecipeViewModel"
 
-    private var binding : FragmentHomeBinding? = null
+    private var binding: FragmentHomeBinding? = null
     private val recipeViewModel: HomeViewModel by viewModels()
     private lateinit var recipeAdapter: RecipeAdapter
 
@@ -50,7 +52,8 @@ class HomeFragment : Fragment(), RecipeAdapter.OnRecipeItemClickListener {
 
 
         recipeViewModel.recipeState.observe(viewLifecycleOwner) { state ->
-            binding?.progressBar?.visibility = if (state is RecipeState.Loading) View.VISIBLE else View.GONE
+            binding?.progressBar?.visibility =
+                if (state is RecipeState.Loading) View.VISIBLE else View.GONE
             when (state) {
                 is RecipeState.Loading -> {
                     Log.d(TAG, "Received loading")
@@ -72,11 +75,12 @@ class HomeFragment : Fragment(), RecipeAdapter.OnRecipeItemClickListener {
     }
 
     override fun onRecipeItemClick(recipe: Recipe) {
-        // Handle the click event here
         val recipeName = recipe.label
-        Toast.makeText(requireContext(), "Clicked on $recipeName", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(requireContext(), "Clicked on $recipeName", Toast.LENGTH_SHORT).show()
 
-        // If you need to perform any other action on item click, you can do it here
+        val navController = findNavController()
+        val bundle = bundleOf("recipe" to recipe)
+        navController.navigate(R.id.action_homeFragment_to_detailsFragment, bundle)
     }
 
     override fun onDestroyView() {
