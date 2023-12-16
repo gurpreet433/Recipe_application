@@ -3,7 +3,7 @@ package com.app.recipeapp.di
 import com.app.recipeapp.api.ApiConstants.API_BASE_URL
 import com.app.recipeapp.api.RecipeApiService
 import com.app.recipeapp.repository.RecipeRepository
-import com.app.recipeapp.ui.home.RecipeViewModel
+import com.app.recipeapp.ui.home.HomeViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -35,7 +35,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideRecipeViewModel(repository: RecipeRepository): RecipeViewModel {
-        return RecipeViewModel(repository)
+    fun provideRecipeViewModel(repository: RecipeRepository): HomeViewModel {
+        return HomeViewModel(repository)
     }
 }

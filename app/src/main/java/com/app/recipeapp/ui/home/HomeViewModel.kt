@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class RecipeViewModel @Inject constructor(
+class HomeViewModel @Inject constructor(
     private val repository: RecipeRepository
 ) : ViewModel() {
     private val _recipeState = MutableLiveData<RecipeState>()

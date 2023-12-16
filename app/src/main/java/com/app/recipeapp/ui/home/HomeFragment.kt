@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import com.app.recipeapp.R
 import com.app.recipeapp.databinding.FragmentHomeBinding
 import com.app.recipeapp.pojo.network.RecipeState
@@ -20,7 +19,7 @@ class HomeFragment : Fragment() {
     private val TAG = "RecipeViewModel"
 
     private var binding : FragmentHomeBinding? = null
-    private val recipeViewModel: RecipeViewModel by viewModels()
+    private val recipeViewModel: HomeViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
