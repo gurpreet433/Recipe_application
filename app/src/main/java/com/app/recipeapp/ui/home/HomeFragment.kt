@@ -7,17 +7,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.app.recipeapp.R
 import com.app.recipeapp.databinding.FragmentHomeBinding
 import com.app.recipeapp.pojo.network.RecipeState
+import dagger.hilt.android.AndroidEntryPoint
 
 
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
     private val TAG = "RecipeViewModel"
 
     private var binding : FragmentHomeBinding? = null
-    private lateinit var recipeViewModel: RecipeViewModel
+
+    private val recipeViewModel: RecipeViewModel by viewModels()
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,9 +37,6 @@ class HomeFragment : Fragment() {
 
         binding = DataBindingUtil
             .inflate<FragmentHomeBinding>(inflater, R.layout.fragment_home, container, false)
-
-        // Initialize ViewModel
-        recipeViewModel = ViewModelProvider(this).get(RecipeViewModel::class.java)
 
         // Observe LiveData
         recipeViewModel.recipeState.observe(viewLifecycleOwner) { state ->

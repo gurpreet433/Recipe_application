@@ -1,5 +1,6 @@
 package com.app.recipeapp.di
 
+import com.app.recipeapp.api.ApiConstants.API_BASE_URL
 import com.app.recipeapp.api.RecipeApiService
 import com.app.recipeapp.repository.RecipeRepository
 import com.app.recipeapp.ui.home.RecipeViewModel
@@ -15,13 +16,12 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
-    private const val BASE_URL = "base_url"
 
     @Provides
     @Singleton
     fun provideRecipeApiService(): RecipeApiService {
         return Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(API_BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(RecipeApiService::class.java)

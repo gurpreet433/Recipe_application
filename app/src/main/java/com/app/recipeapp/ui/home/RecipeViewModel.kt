@@ -6,14 +6,23 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.app.recipeapp.pojo.network.RecipeState
 import com.app.recipeapp.repository.RecipeRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class RecipeViewModel(private val repository: RecipeRepository) : ViewModel() {
 
+@HiltViewModel
+class RecipeViewModel @Inject constructor(
+    private val repository: RecipeRepository
+) : ViewModel() {
     private val _recipeState = MutableLiveData<RecipeState>()
     val recipeState: LiveData<RecipeState> get() = _recipeState
 
-    fun searchRecipes(query: String) {
+    init {
+        searchRecipes("food")
+    }
+
+    private fun searchRecipes(query: String) {
         viewModelScope.launch {
             _recipeState.value = RecipeState.Loading
             try {

@@ -6,6 +6,11 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface RecipeApiService {
-    @GET("search")
-    suspend fun searchRecipes(@Query("q") query: String): RecipeSearchResponse
+
+    @GET("recipes/v2")
+    suspend fun searchRecipes(
+        @Query("app_id") appId: String,
+        @Query("app_key") appKey: String,
+        @Query("q") query: String
+    ): RecipeSearchResponse
 }
