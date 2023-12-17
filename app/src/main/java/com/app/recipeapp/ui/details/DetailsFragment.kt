@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.app.recipeapp.R
 import com.app.recipeapp.databinding.FragmentDetailsBinding
 import com.app.recipeapp.databinding.FragmentHomeBinding
@@ -57,6 +59,10 @@ class DetailsFragment : Fragment() {
             Toast.makeText(binding?.root?.context,
                 binding?.root?.context?.getString(R.string.saved_clicked_todo), Toast.LENGTH_SHORT).show()
         }
+
+        val recyclerView: RecyclerView? = binding?.materials
+        recyclerView?.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView?.adapter = IngredientAdapter(recipe?.ingredients.orEmpty())
 
         binding?.backButton?.setOnClickListener {
             findNavController().popBackStack()

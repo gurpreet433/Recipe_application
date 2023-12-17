@@ -1,8 +1,21 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.RecipeApp" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- Default style for TextViews -->
+        <item name="android:textViewStyle">@style/AppTextViewStyle</item>
+
+        <!-- Default style for Buttons -->
+        <item name="buttonStyle">@style/AppButtonStyle</item>
+    </style>
+
+    <style name="AppTextViewStyle">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <!-- You can add more attributes here if needed -->
+    </style>
+
+    <style name="AppButtonStyle">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <!-- You can add more attributes here if needed -->
     </style>
 
     <style name="Theme.RecipeApp" parent="Base.Theme.RecipeApp" />

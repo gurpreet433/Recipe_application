@@ -167,6 +167,31 @@
                 app:layout_constraintTop_toBottomOf="@+id/subHeadingOne" />
 
 
+            <TextView
+                android:id="@+id/materialsHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginLeft="@dimen/margin_medium"
+                android:singleLine="true"
+                android:text="@string/materials"
+                android:textAlignment="center"
+                android:textSize="@dimen/sub_heading_text_size"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/caloriesTextView" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/materials"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_medium"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/materialsHeading"
+                app:layout_constraintTop_toBottomOf="@+id/materialsHeading" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </layout>
