@@ -12,7 +12,8 @@
     <androidx.cardview.widget.CardView
         android:background="@color/black"
         app:cardCornerRadius="@dimen/card_radius"
-        android:layout_marginStart="@dimen/margin_medium"
+        android:layout_marginStart="@dimen/margin_small"
+        android:layout_marginEnd="@dimen/margin_small"
         android:layout_marginBottom="@dimen/margin_medium"
         android:layout_width="@dimen/horizontal_card_width"
         android:layout_height="@dimen/horizontal_card_height">
