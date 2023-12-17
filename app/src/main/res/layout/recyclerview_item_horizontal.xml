@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="recipe"
+            type="com.app.recipeapp.pojo.network.Recipe" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:background="@color/black"
+        app:cardCornerRadius="@dimen/card_radius"
+        android:layout_width="@dimen/horizontal_card_width"
+        android:layout_height="@dimen/horizontal_card_height">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:background="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageBackground"
+                android:scaleType="fitXY"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+            <TextView
+                android:id="@+id/recipeTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/home_card_margin"
+                android:layout_marginBottom="@dimen/home_card_margin"
+                android:ellipsize="end"
+                android:layout_marginEnd="@dimen/home_card_margin"
+                android:maxLines="1"
+                android:text="@{recipe.label}"
+                android:textColor="@color/white"
+                android:textSize="@dimen/card_text_size"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/saveButton"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="Recipe Title" />
+
+            <ImageButton
+                android:id="@+id/saveButton"
+                android:layout_width="@dimen/icon_width_card"
+                android:layout_height="40dp"
+                android:layout_marginEnd="@dimen/home_card_margin"
+                android:src="@drawable/save_icon"
+                android:scaleType="fitXY"
+                android:background="@color/transparent"
+                app:layout_constraintBottom_toBottomOf="@+id/recipeTitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/recipeTitle"
+                app:tint="@color/white" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>

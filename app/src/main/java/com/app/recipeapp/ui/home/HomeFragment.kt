@@ -20,13 +20,15 @@ import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class HomeFragment : Fragment(), RecipeAdapter.OnRecipeItemClickListener {
+class HomeFragment : Fragment(), RecipeAdapter.OnRecipeItemClickListener,
+    RecipeHorizontalAdapter.OnRecipeItemHorizontalClickListener {
 
     private val TAG = "RecipeViewModel"
 
     private var binding: FragmentHomeBinding? = null
     private val recipeViewModel: HomeViewModel by viewModels()
     private lateinit var recipeAdapter: RecipeAdapter
+    private lateinit var recipeHorizontalAdapter: RecipeHorizontalAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,9 +38,16 @@ class HomeFragment : Fragment(), RecipeAdapter.OnRecipeItemClickListener {
         super.onViewCreated(view, savedInstanceState)
 
         recipeAdapter = RecipeAdapter(this)
+        recipeHorizontalAdapter = RecipeHorizontalAdapter(this)
+
         binding?.verticalRecyclerview?.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = recipeAdapter
+        }
+
+        binding?.horizontalRecyclerview?.apply {
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            adapter = recipeHorizontalAdapter
         }
     }
 
@@ -50,7 +59,6 @@ class HomeFragment : Fragment(), RecipeAdapter.OnRecipeItemClickListener {
         binding = DataBindingUtil
             .inflate<FragmentHomeBinding>(inflater, R.layout.fragment_home, container, false)
 
-
         recipeViewModel.recipeState.observe(viewLifecycleOwner) { state ->
             binding?.progressBar?.visibility =
                 if (state is RecipeState.Loading) View.VISIBLE else View.GONE
@@ -61,7 +69,8 @@ class HomeFragment : Fragment(), RecipeAdapter.OnRecipeItemClickListener {
 
                 is RecipeState.Success -> {
                     val recipeSearchResponse = state.recipeSearchResponse
-                    recipeAdapter.updateData(recipeSearchResponse.hits)
+                    recipeAdapter.updateData(recipeSearchResponse.hits?.subList(0, 5)) // just for demo purposes showing 4, api min is 20
+                    recipeHorizontalAdapter.updateData(recipeSearchResponse.hits?.subList(6, recipeSearchResponse.hits.size - 1))
                 }
 
                 is RecipeState.Error -> {
