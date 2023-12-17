@@ -9,6 +9,7 @@
     <string name="saved_fragment">Saved Fragment</string>
     <string name="account_fragment">Account Fragment</string>
     <string name="saved_clicked_todo">Saved clicked: Todo</string>
+    <string name="calendar_clicked_todo">Calender clicked: Todo</string>
     <string name="dummy_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a aliquam ante, et dapibus nulla.</string>
     <string name="calories">Calories</string>
     <string name="weight">Weight</string>
@@ -16,4 +17,5 @@
     <string name="loading">Loading...</string>
     <string name="materials">Materials</string>
     <string name="material_name">Material Name</string>
+    <string name="today_s_recipe">Today\'s recipe</string>
 </resources>

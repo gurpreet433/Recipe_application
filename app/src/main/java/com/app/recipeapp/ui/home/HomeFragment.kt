@@ -49,6 +49,12 @@ class HomeFragment : Fragment(), RecipeAdapter.OnRecipeItemClickListener,
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             adapter = recipeHorizontalAdapter
         }
+
+        binding?.calendar?.setOnClickListener {
+            Toast.makeText(requireContext(),
+                requireContext().getString(R.string.calendar_clicked_todo), Toast.LENGTH_SHORT).show()
+
+        }
     }
 
     override fun onCreateView(
@@ -60,8 +66,8 @@ class HomeFragment : Fragment(), RecipeAdapter.OnRecipeItemClickListener,
             .inflate<FragmentHomeBinding>(inflater, R.layout.fragment_home, container, false)
 
         recipeViewModel.recipeState.observe(viewLifecycleOwner) { state ->
-            binding?.progressBar?.visibility =
-                if (state is RecipeState.Loading) View.VISIBLE else View.GONE
+            binding?.progressBar?.visibility = if (state is RecipeState.Loading) View.VISIBLE else View.GONE
+            binding?.group?.visibility = if (state is RecipeState.Loading) View.GONE else View.VISIBLE
             when (state) {
                 is RecipeState.Loading -> {
                     Log.d(TAG, "Received loading")
