@@ -28,7 +28,7 @@ class IngredientAdapter(private val ingredients: List<Ingredient>) :
         holder.nameTextView.text = ingredient.text
 
         val decimalFormat = DecimalFormat("#.##")
-        holder.weightTextView.text = decimalFormat.format(ingredient.weight)
+        "${decimalFormat.format(ingredient.weight)}g".also { holder.weightTextView.text = it }
     }
 
     override fun getItemCount(): Int {

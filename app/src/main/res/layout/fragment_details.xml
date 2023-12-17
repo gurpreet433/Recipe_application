@@ -59,7 +59,7 @@
                 android:id="@+id/saveButton"
                 android:layout_width="@dimen/icon_width_card"
                 android:layout_height="40dp"
-                android:layout_marginRight="@dimen/margin_large"
+                android:layout_marginRight="@dimen/margin_medium"
                 android:layout_marginBottom="@dimen/margin_medium"
                 android:background="@color/transparent"
                 android:scaleType="fitXY"
