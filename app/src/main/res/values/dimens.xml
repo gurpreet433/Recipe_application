@@ -2,13 +2,13 @@
 <resources>
     <dimen name="padding_medium">20dp</dimen>
     <dimen name="card_radius">35dp</dimen>
-    <dimen name="home_card_margin">25dp</dimen>
+    <dimen name="home_card_margin">14dp</dimen>
     <dimen name="card_height_main">400dp</dimen>
     <dimen name="card_text_size">22sp</dimen>
     <dimen name="margin_medium">20dp</dimen>
     <dimen name="icon_width_card">40dp</dimen>
-    <dimen name="horizontal_card_width">250dp</dimen>
-    <dimen name="horizontal_card_height">430dp</dimen>
+    <dimen name="horizontal_card_width">180dp</dimen>
+    <dimen name="horizontal_card_height">260dp</dimen>
     <dimen name="margin_large">40dp</dimen>
     <dimen name="details_img_height">400dp</dimen>
     <dimen name="back_arrow_size">80dp</dimen>
