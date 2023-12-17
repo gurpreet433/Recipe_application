@@ -24,7 +24,8 @@ class MainActivity : AppCompatActivity() {
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_nav)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            if (destination.id == R.id.homeFragment || destination.id == R.id.searchFragment) {
+            if (destination.id == R.id.homeFragment || destination.id == R.id.searchFragment
+                || destination.id == R.id.accountFragment || destination.id == R.id.savedFragment) {
                 bottomNav.visibility = View.VISIBLE
             } else {
                 bottomNav.visibility = View.GONE
