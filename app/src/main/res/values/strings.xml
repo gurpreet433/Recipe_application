@@ -8,4 +8,5 @@
     <string name="search_fragment">Search Fragment</string>
     <string name="saved_fragment">Saved Fragment</string>
     <string name="account_fragment">Account Fragment</string>
+    <string name="saved_clicked_todo">Saved clicked: Todo</string>
 </resources>

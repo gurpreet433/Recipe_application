@@ -6,4 +6,5 @@
     <dimen name="card_height_main">400dp</dimen>
     <dimen name="card_text_size">18sp</dimen>
     <dimen name="margin_medium">20dp</dimen>
+    <dimen name="icon_width_card">40dp</dimen>
 </resources>

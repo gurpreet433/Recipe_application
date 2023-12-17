@@ -2,6 +2,7 @@ package com.app.recipeapp.ui.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.app.recipeapp.R
@@ -54,6 +55,12 @@ class RecipeAdapter(private val itemClickListener: OnRecipeItemClickListener) : 
             Glide.with(binding.root.context)
                 .load(binding.recipe?.image)
                 .into(binding.imageBackground)
+
+            binding.saveButton.setOnClickListener {
+                Toast.makeText(binding.root.context,
+                    binding.root.context.getString(R.string.saved_clicked_todo), Toast.LENGTH_SHORT).show()
+
+            }
         }
     }
 

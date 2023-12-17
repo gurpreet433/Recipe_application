@@ -12,7 +12,6 @@
         android:layout_height="match_parent"
         tools:context=".ui.details.DetailsFragment">
 
-
         <ImageView
             android:id="@+id/imageMain"
             android:layout_width="match_parent"
@@ -30,7 +29,8 @@
             android:background="@color/transparent"
             android:padding="@dimen/padding_medium"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/white" />
 
         <TextView
             android:id="@+id/recipeTitle"
@@ -50,12 +50,15 @@
 
         <ImageButton
             android:id="@+id/saveButton"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginEnd="@dimen/margin_medium"
-            android:layout_marginBottom="24dp"
+            android:layout_width="@dimen/icon_width_card"
+            android:layout_height="40dp"
+            android:layout_marginEnd="@dimen/home_card_margin"
+            android:background="@color/transparent"
+            android:scaleType="fitXY"
+            android:src="@drawable/save_icon"
             app:layout_constraintBottom_toBottomOf="@+id/imageMain"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:tint="@color/white" />
 
         <TextView
             android:id="@+id/moreDetail"

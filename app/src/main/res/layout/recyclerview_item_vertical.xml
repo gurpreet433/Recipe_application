@@ -49,12 +49,16 @@
 
             <ImageButton
                 android:id="@+id/saveButton"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="@dimen/icon_width_card"
+                android:layout_height="40dp"
                 android:layout_marginEnd="@dimen/home_card_margin"
+                android:src="@drawable/save_icon"
+                android:scaleType="fitXY"
+                android:background="@color/transparent"
                 app:layout_constraintBottom_toBottomOf="@+id/recipeTitle"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/recipeTitle" />
+                app:layout_constraintTop_toTopOf="@+id/recipeTitle"
+                app:tint="@color/white" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
