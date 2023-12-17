@@ -6,8 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewTreeObserver
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.os.bundleOf
+import androidx.core.widget.NestedScrollView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -54,6 +57,37 @@ class HomeFragment : Fragment(), RecipeAdapter.OnRecipeItemClickListener,
             Toast.makeText(requireContext(),
                 requireContext().getString(R.string.calendar_clicked_todo), Toast.LENGTH_SHORT).show()
 
+        }
+
+        handleScrollHeader()
+    }
+
+    private fun handleScrollHeader() {
+        val nestedScrollView: NestedScrollView? = binding?.nestedScrollView
+        val headerImageView: ImageView? = binding?.imageView
+        val topHeader: ImageView? = binding?.topHeader
+
+        nestedScrollView?.viewTreeObserver?.addOnScrollChangedListener(ViewTreeObserver.OnScrollChangedListener {
+            // Check if the header is not visible (scrolled off the screen)
+            val isHeaderVisible = nestedScrollView.scrollY < headerImageView?.height!!
+
+            if (isHeaderVisible) {
+                topHeader?.visibility = View.GONE
+                binding?.topHeaderHeading?.visibility = View.GONE
+                Log.d(TAG, "Visible")
+            } else {
+                topHeader?.visibility = View.VISIBLE
+                binding?.topHeaderHeading?.visibility = View.VISIBLE
+                Log.d(TAG, "Gone")
+            }
+        })
+
+        topHeader?.setOnClickListener {
+            nestedScrollView?.smoothScrollTo(0, 0)
+        }
+
+        binding?.topHeaderHeading?.setOnClickListener {
+            nestedScrollView?.smoothScrollTo(0, 0)
         }
     }
 
