@@ -85,7 +85,6 @@ class HomeFragment : Fragment(), RecipeAdapter.OnRecipeItemClickListener,
         topHeader?.setOnClickListener {
             nestedScrollView?.smoothScrollTo(0, 0)
         }
-
         binding?.topHeaderHeading?.setOnClickListener {
             nestedScrollView?.smoothScrollTo(0, 0)
         }
