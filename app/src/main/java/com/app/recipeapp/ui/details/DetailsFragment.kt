@@ -49,6 +49,15 @@ class DetailsFragment : Fragment() {
         binding?.recipeTitle?.text = recipe?.label
         binding?.moreDetail?.text = recipe?.label
 
+        binding?.caloriesTextView?.text = recipe?.calories?.toInt().toString()
+        binding?.weightTextView?.text = recipe?.totalWeight?.toInt().toString()
+        binding?.co2TextView?.text = recipe?.totalCO2Emissions?.toInt().toString()
+
+        binding?.saveButton?.setOnClickListener {
+            Toast.makeText(binding?.root?.context,
+                binding?.root?.context?.getString(R.string.saved_clicked_todo), Toast.LENGTH_SHORT).show()
+        }
+
         binding?.backButton?.setOnClickListener {
             findNavController().popBackStack()
         }

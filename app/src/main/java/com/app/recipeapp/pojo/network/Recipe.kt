@@ -16,7 +16,14 @@ data class Recipe(
     val healthLabels: List<String>?,
     val cautions: List<String>?,
     val ingredientLines: List<String>?,
-    val ingredients: List<Ingredient>?
+    val ingredients: List<Ingredient>?,
+    val calories: Double?,
+    val totalWeight: Double?,
+    val totalCO2Emissions: Double?,
+    val instructions: List<String>?,
+    val cuisineType: List<String>?,
+    val mealType: List<String>?,
+    val dishType: List<String>?
 ) : Parcelable{
     constructor(parcel: Parcel) : this(
         parcel.readString(),
@@ -31,7 +38,14 @@ data class Recipe(
         parcel.createStringArrayList(),
         parcel.createStringArrayList(),
         parcel.createStringArrayList(),
-        parcel.createTypedArrayList(Ingredient)
+        parcel.createTypedArrayList(Ingredient),
+        parcel.readValue(Double::class.java.classLoader) as? Double,
+        parcel.readValue(Double::class.java.classLoader) as? Double,
+        parcel.readValue(Double::class.java.classLoader) as? Double,
+        parcel.createStringArrayList(),
+        parcel.createStringArrayList(),
+        parcel.createStringArrayList(),
+        parcel.createStringArrayList()
     ) {
     }
 
@@ -49,6 +63,13 @@ data class Recipe(
         parcel.writeStringList(cautions)
         parcel.writeStringList(ingredientLines)
         parcel.writeTypedList(ingredients)
+        parcel.writeValue(calories)
+        parcel.writeValue(totalWeight)
+        parcel.writeValue(totalCO2Emissions)
+        parcel.writeStringList(instructions)
+        parcel.writeStringList(cuisineType)
+        parcel.writeStringList(mealType)
+        parcel.writeStringList(dishType)
     }
 
     override fun describeContents(): Int {
@@ -64,5 +85,6 @@ data class Recipe(
             return arrayOfNulls(size)
         }
     }
+
 
 }
