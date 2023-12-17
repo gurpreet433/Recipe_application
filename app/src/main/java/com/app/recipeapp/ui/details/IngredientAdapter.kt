@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.app.recipeapp.R
 import com.app.recipeapp.pojo.network.Ingredient
+import java.text.DecimalFormat
 
 class IngredientAdapter(private val ingredients: List<Ingredient>) :
     RecyclerView.Adapter<IngredientAdapter.IngredientViewHolder>() {
@@ -25,7 +26,9 @@ class IngredientAdapter(private val ingredients: List<Ingredient>) :
     override fun onBindViewHolder(holder: IngredientViewHolder, position: Int) {
         val ingredient = ingredients[position]
         holder.nameTextView.text = ingredient.text
-        holder.weightTextView.text = ingredient.weight.toString()
+
+        val decimalFormat = DecimalFormat("#.##")
+        holder.weightTextView.text = decimalFormat.format(ingredient.weight)
     }
 
     override fun getItemCount(): Int {
